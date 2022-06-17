@@ -1,0 +1,64 @@
+.navMenuWrapper {
+  width: 224px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(247, 247, 247, 1) 90%,
+    rgba(0, 0, 0, 0.072) 100%
+  );
+}
+
+.anchor_li {
+  max-height: 44px;
+  padding-top: 24px;
+}
+
+.navMenuHeader {
+  margin: 0;
+  padding-top: 20px;
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 160%;
+  text-align: center;
+}
+
+.navMenu_h3 {
+  margin: 0;
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 160%;
+  text-align: center;
+}
+
+.anchor {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  padding: 15px;
+  text-decoration: none;
+  color: #82b284;
+}
+
+.anchor:hover {
+  background-color: #eeeeee;
+}
+
+.anchor:hover svg path {
+  fill: #a4c7a5;
+}
+
+.anchor:hover div {
+  color: #a4c7a5;
+}
+
+.anchor:active svg path {
+  fill: #58a742;
+}
+
+.anchor:active div {
+  color: #58a742;
+}

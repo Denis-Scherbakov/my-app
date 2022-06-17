@@ -1,0 +1,45 @@
+.navWrapper {
+  display: flex;
+  height: 100%;
+}
+
+.navBarWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #82b284;
+}
+
+.navButton {
+  width: 48px;
+  height: 60px;
+  border: none;
+  background-color: #82b284;
+  cursor: pointer;
+}
+
+.navButton:hover {
+  background-color: #a4c7a5;
+}
+
+.navButton:active {
+  background-color: #58a742;
+}
+
+.navAnchor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 60px;
+  background-color: #82b284;
+  cursor: pointer;
+}
+
+.navAnchor:hover {
+  background-color: #a4c7a5;
+}
+
+.navAnchor:active {
+  background-color: #58a742;
+}

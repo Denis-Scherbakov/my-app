@@ -1,0 +1,75 @@
+.infoWrapper {
+  width: 100%;
+}
+
+.infoHeadWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 15px;
+}
+
+.infoHead {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+  letter-spacing: 0.5px;
+  margin: 0;
+
+  padding-left: 43px;
+}
+
+.editBtn {
+  border: none;
+  background: none;
+  padding-left: 13px;
+  cursor: pointer;
+}
+
+.editBtn:hover svg path {
+  fill: #a4c7a5;
+}
+
+.editBtn:active svg path {
+  fill: #58a742;
+}
+
+.li {
+  padding-bottom: 30px;
+}
+
+.infoList {
+  padding-left: 43px;
+}
+
+.infoChapter {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 20px;
+  text-transform: uppercase;
+}
+
+.grid_div {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: minmax(150px, max-content) auto;
+}
+
+.infoKey {
+  font-weight: 300;
+  font-size: 14px;
+}
+
+a {
+  color: #82b284;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #98c88c;
+}
+
+a:active {
+  color: #58a742;
+}

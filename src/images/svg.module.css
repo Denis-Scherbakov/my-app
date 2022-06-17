@@ -1,0 +1,7 @@
+.svgWrapper:hover svg path {
+  fill: #a4c7a5;
+}
+
+.svgWrapper:active svg path {
+  fill: #58a742;
+}
