@@ -15,7 +15,6 @@
   font-size: 21px;
   letter-spacing: 0.5px;
   margin: 0;
-
   padding-left: 43px;
 }
 
@@ -35,7 +34,35 @@
 }
 
 .li {
-  padding-bottom: 30px;
+  position: relative;
+  padding-bottom: 62px;
+}
+
+.li:after {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  height: 0.5em;
+  border-top: 1px solid #e5e5e5;
+  width: 97%;
+}
+
+.last_li {
+  position: relative;
+  padding-top: 20px;
+}
+
+.last_li::after {
+  content: "";
+  position: absolute;
+  bottom: -23px;
+  left: 0;
+  right: 0;
+  height: 0.5em;
+  border-top: 1px solid #e5e5e5;
+  width: 97%;
 }
 
 .infoList {
@@ -43,6 +70,16 @@
 }
 
 .infoChapter {
+  margin: 0;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 20px;
+  text-transform: uppercase;
+}
+
+.firstInfoChapter {
+  margin: 0;
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
@@ -52,8 +89,9 @@
 
 .grid_div {
   display: grid;
-  gap: 14px;
+  gap: 5px;
   grid-template-columns: minmax(150px, max-content) auto;
+  padding-top: 15px;
 }
 
 .infoKey {
@@ -72,4 +110,34 @@ a:hover {
 
 a:active {
   color: #58a742;
+}
+
+.gallery_ul {
+  display: flex;
+  padding-top: 15px;
+  padding-right: 20px;
+}
+
+.gallery_li {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: left;
+}
+
+.photoName {
+  font-size: 12px;
+  padding-top: 5px;
+}
+
+.photoDate {
+  font-size: 12px;
+  color: #808080;
+  padding-top: 5px;
+}
+
+.addPhotosBtn {
+  width: 400px;
+  height: 40px;
+  margin-top: 32px;
 }

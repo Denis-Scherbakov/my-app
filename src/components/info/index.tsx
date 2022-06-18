@@ -43,7 +43,7 @@ export function Info(props: any) {
           <li className={styles.li}>
             <div>
               <div className={styles.infoHeadWrapper}>
-                <h3 className={styles.infoChapter}>Общая информация</h3>
+                <h3 className={styles.firstInfoChapter}>Общая информация</h3>
                 <button className={styles.editBtn}>
                   <svg
                     width="20"
@@ -152,25 +152,28 @@ export function Info(props: any) {
               </div>
             </div>
           </li>
-          <li>
+          <li className={styles.last_li}>
             <h3 className={styles.infoChapter}>Приложенные фото</h3>
-            <ul>
-              <li>
-                <img src={props.companies.photos[0].thumbpath} alt="photo" />
-                <span>Name</span>
-                <span>Date</span>
-              </li>
-              <li>
-                <img src="#" alt="photo" />
-                <span>Name</span>
-                <span>Date</span>
-              </li>
-              <li>
-                <img src="#" alt="photo" />
-                <span>Name</span>
-                <span>Date</span>
-              </li>
+            <ul className={styles.gallery_ul}>
+              {props.companies.photos.map(
+                (photo: {
+                  name: "0b8fc462dcabf7610a91.png";
+                  filepath: "http://135.181.35.61:2112/0b8fc462dcabf7610a91.png";
+                  thumbpath: "http://135.181.35.61:2112/0b8fc462dcabf7610a91_160x160.png";
+                }) => (
+                  <li className={styles.gallery_li}>
+                    <img
+                      src={photo.thumbpath}
+                      alt="photo"
+                      className={styles.photo_img}
+                    />
+                    <span className={styles.photoName}>{photo.name}</span>
+                    <span className={styles.photoDate}>Date</span>
+                  </li>
+                )
+              )}
             </ul>
+            <button className={styles.addPhotosBtn}></button>
           </li>
         </ul>
       </div>
