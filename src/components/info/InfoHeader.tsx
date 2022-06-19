@@ -1,8 +1,31 @@
 import styles from "..//info/infoHeader.module.css";
 
-export function InfoHeader() {
+export function InfoHeader(props: any) {
   return (
     <div className={styles.infoHeaderWrapper}>
+      {props.modalDeleteCompany && (
+        <div className={styles.deleteModalWrapper}>
+          <div className={styles.deleteCard}>Удалить карточку</div>
+          <div className={styles.deleteQuestion}>
+            Отправить карточку организации в<br />
+            архив?
+          </div>
+          <div className={styles.modalBtnsWrapper}>
+            <button
+              className={styles.cancelBtn}
+              onClick={props.handleCancelDeleteCompany}
+            >
+              отмена
+            </button>
+            <button
+              className={styles.acceptBtn}
+              onClick={props.handleDeleteCompany}
+            >
+              удалить
+            </button>
+          </div>
+        </div>
+      )}
       <div>
         <a href="#" className={styles.anchor}>
           <svg
@@ -84,7 +107,10 @@ export function InfoHeader() {
           </button>
         </li>
         <li>
-          <button className={`${styles.actionsListBtn} ${styles.DeleteBtn}`}>
+          <button
+            className={`${styles.actionsListBtn} ${styles.DeleteBtn}`}
+            onClick={props.handleModalDeleteCompany}
+          >
             <svg
               width="25"
               height="25"

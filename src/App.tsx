@@ -71,6 +71,7 @@ function App() {
     useState<BusinessEntity | null>(null);
   const [contactsIsEdit, setContactsIsEdit] = useState<boolean>(false);
   const [contactsValue, setContactsValue] = useState<Contacts | null>(null);
+  const [modalDeleteCompany, setModalDeleteCompany] = useState<boolean>(false);
 
   useEffect(() => {
     fetch("http://135.181.35.61:2112/auth?user=USER", {
@@ -263,6 +264,25 @@ function App() {
     setContactsIsEdit(false);
   };
 
+  const handleModalDeleteCompany = () => {
+    setModalDeleteCompany(!modalDeleteCompany);
+  };
+
+  const handleCancelDeleteCompany = () => {
+    setModalDeleteCompany(false);
+  };
+
+  const handleDeleteCompany = () => {
+    fetch("http://135.181.35.61:2112/companies/12", {
+      method: "DELETE",
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUiIsImlhdCI6MTY1NTM4NDEyMywiZXhwIjoxNjU1OTg4OTIzfQ.RcJrs_cNvtg5nh7Q2_laRmsA-pUD0jB1jqx04es9hok",
+      },
+    });
+    setModalDeleteCompany(false);
+  };
+
   return (
     <div className={styles.app}>
       <div className={styles.wrapper}>
@@ -295,6 +315,10 @@ function App() {
           handleContactsPhoneChange={handleContactsPhoneChange}
           handleContactsEmailChange={handleContactsEmailChange}
           handleContactsSave={handleContactsSave}
+          modalDeleteCompany={modalDeleteCompany}
+          handleModalDeleteCompany={handleModalDeleteCompany}
+          handleCancelDeleteCompany={handleCancelDeleteCompany}
+          handleDeleteCompany={handleDeleteCompany}
         />
       </div>
 

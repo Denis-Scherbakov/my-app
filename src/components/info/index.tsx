@@ -6,7 +6,12 @@ export function Info(props: any) {
     props.companies &&
     props.contacts && (
       <div className={styles.infoWrapper}>
-        <InfoHeader />
+        <InfoHeader
+          modalDeleteCompany={props.modalDeleteCompany}
+          handleModalDeleteCompany={props.handleModalDeleteCompany}
+          handleCancelDeleteCompany={props.handleCancelDeleteCompany}
+          handleDeleteCompany={props.handleDeleteCompany}
+        />
         <div className={styles.infoHeadWrapper}>
           {!props.shortNameIsEdit && (
             <h2 className={styles.infoHead}>{props.companies.shortName}</h2>
