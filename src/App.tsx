@@ -48,6 +48,12 @@ type BusinessEntity = {
   type: string[];
 };
 
+type Contacts = {
+  fullName: string;
+  phone: string;
+  email: string;
+};
+
 // type AppProps = {
 //   comaines: Company[];
 //   contacts: Contact[];
@@ -63,6 +69,8 @@ function App() {
     useState<boolean>(false);
   const [businessEntityValue, setBusinessEntityValue] =
     useState<BusinessEntity | null>(null);
+  const [contactsIsEdit, setContactsIsEdit] = useState<boolean>(false);
+  const [contactsValue, setContactsValue] = useState<Contacts | null>(null);
 
   useEffect(() => {
     fetch("http://135.181.35.61:2112/auth?user=USER", {
@@ -117,7 +125,7 @@ function App() {
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUiIsImlhdCI6MTY1NTM4NDEyMywiZXhwIjoxNjU1OTg4OTIzfQ.RcJrs_cNvtg5nh7Q2_laRmsA-pUD0jB1jqx04es9hok",
       },
       body: JSON.stringify({ shortName: shortNameValue }),
-    }).then((res) => console.log(res));
+    });
     setShortNameIsEdit(false);
   };
 
@@ -195,11 +203,65 @@ function App() {
         businessEntity: businessEntityValue!.businessEntity,
         type: businessEntityValue!.type,
       }),
-    }).then((res) => console.log(res));
+    });
     setBusinessEntityIsEdit(false);
   };
 
-  console.log(businessEntityValue);
+  const handleContactsIsEdit = () => {
+    setContactsIsEdit(!contactsIsEdit);
+    setContactsValue({
+      fullName: `${contacts!.lastname} ${contacts!.firstname} ${
+        contacts!.patronymic
+      }`,
+      phone: contacts!.phone,
+      email: contacts!.email,
+    });
+  };
+
+  const handleContactsFullNameChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setContactsValue({
+      ...contactsValue!,
+      fullName: e.target.value,
+    });
+  };
+
+  const handleContactsPhoneChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setContactsValue({
+      ...contactsValue!,
+      phone: e.target.value,
+    });
+  };
+
+  const handleContactsEmailChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setContactsValue({
+      ...contactsValue!,
+      email: e.target.value,
+    });
+  };
+
+  const handleContactsSave = () => {
+    fetch("http://135.181.35.61:2112/contacts/16", {
+      method: "PATCH",
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUiIsImlhdCI6MTY1NTM4NDEyMywiZXhwIjoxNjU1OTg4OTIzfQ.RcJrs_cNvtg5nh7Q2_laRmsA-pUD0jB1jqx04es9hok",
+      },
+      body: JSON.stringify({
+        lastname: contactsValue!.fullName.split(" ")[0],
+        firstname: contactsValue!.fullName.split(" ")[1],
+        patronymic: contactsValue!.fullName.split(" ")[2],
+        phone: contactsValue!.phone,
+        email: contactsValue!.email,
+      }),
+    });
+    setContactsIsEdit(false);
+  };
 
   return (
     <div className={styles.app}>
@@ -226,6 +288,13 @@ function App() {
           handleBusinessEntityFormChange={handleBusinessEntityFormChange}
           handleBusinessEntityTypeChange={handleBusinessEntityTypeChange}
           handleBusinessEntitySave={handleBusinessEntitySave}
+          handleContactsIsEdit={handleContactsIsEdit}
+          contactsIsEdit={contactsIsEdit}
+          handleContactsFullNameChange={handleContactsFullNameChange}
+          contactsValue={contactsValue}
+          handleContactsPhoneChange={handleContactsPhoneChange}
+          handleContactsEmailChange={handleContactsEmailChange}
+          handleContactsSave={handleContactsSave}
         />
       </div>
 

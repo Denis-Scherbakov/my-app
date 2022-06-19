@@ -59,6 +59,15 @@
   letter-spacing: 0.5px;
 }
 
+.inputEntities:hover {
+  border-color: #808080;
+}
+
+.inputEntities:focus {
+  outline: none !important;
+  border: 1px solid #3b3b3b;
+}
+
 .inputDate {
   margin-left: 5px;
 }
