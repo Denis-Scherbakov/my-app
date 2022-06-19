@@ -38,22 +38,37 @@ type Contact = {
   updatedAt: "2020-11-23T09:30:00Z";
 };
 
+type BusinessEntity = {
+  name: string;
+  contract: {
+    no: string;
+    issue_date: string;
+  };
+  businessEntity: string;
+  type: string[];
+};
+
 // type AppProps = {
 //   comaines: Company[];
 //   contacts: Contact[];
 // };
 
 function App() {
-  const [isActive, setIsActive] = useState<object | null>(null);
+  const [bearer, setBearer] = useState<object | null>(null);
   const [companies, setCompanies] = useState<Company | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [contacts, setContacts] = useState<Contact | null>(null);
+  const [shortNameIsEdit, setShortNameIsEdit] = useState<boolean>(false);
+  const [shortNameValue, setShortNameValue] = useState<string>("");
+  const [businessEntityIsEdit, setBusinessEntityIsEdit] =
+    useState<boolean>(false);
+  const [businessEntityValue, setBusinessEntityValue] =
+    useState<BusinessEntity | null>(null);
 
   useEffect(() => {
     fetch("http://135.181.35.61:2112/auth?user=USER", {
       method: "GET",
     }).then((res) => {
-      setIsActive(res);
+      setBearer(res);
     });
   }, []);
 
@@ -68,7 +83,6 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         setCompanies(data);
-        setIsLoading(true);
       });
   }, []);
 
@@ -86,11 +100,133 @@ function App() {
       .then((res) => setContacts(res));
   }, []);
 
+  const handleShortNameEdit = () => {
+    setShortNameIsEdit(!shortNameIsEdit);
+    setShortNameValue(companies!.shortName);
+  };
+
+  const handleShortNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setShortNameValue(e.target.value);
+  };
+
+  const handleShortNameSave = () => {
+    fetch("http://135.181.35.61:2112/companies/12", {
+      method: "PATCH",
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUiIsImlhdCI6MTY1NTM4NDEyMywiZXhwIjoxNjU1OTg4OTIzfQ.RcJrs_cNvtg5nh7Q2_laRmsA-pUD0jB1jqx04es9hok",
+      },
+      body: JSON.stringify({ shortName: shortNameValue }),
+    }).then((res) => console.log(res));
+    setShortNameIsEdit(false);
+  };
+
+  const handleBusinessEntityEdit = () => {
+    setBusinessEntityIsEdit(!businessEntityIsEdit);
+    setBusinessEntityValue({
+      name: companies!.name,
+      contract: companies!.contract,
+      businessEntity: companies!.businessEntity,
+      type: companies!.type,
+    });
+  };
+
+  const handleBusinessEntityNameChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setBusinessEntityValue({
+      ...businessEntityValue!,
+      name: e.target.value,
+    });
+  };
+
+  const handleBusinessEntityContractNoChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setBusinessEntityValue({
+      ...businessEntityValue!,
+      contract: {
+        ...businessEntityValue!.contract,
+        no: e.target.value,
+      },
+    });
+  };
+
+  const handleBusinessEntityIssueDateChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setBusinessEntityValue({
+      ...businessEntityValue!,
+      contract: {
+        ...businessEntityValue!.contract,
+        issue_date: e.target.value,
+      },
+    });
+  };
+
+  const handleBusinessEntityFormChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setBusinessEntityValue({
+      ...businessEntityValue!,
+      businessEntity: e.target.value,
+    });
+  };
+
+  const handleBusinessEntityTypeChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setBusinessEntityValue({
+      ...businessEntityValue!,
+      type: [e.target.value],
+    });
+  };
+
+  const handleBusinessEntitySave = () => {
+    fetch("http://135.181.35.61:2112/companies/12", {
+      method: "PATCH",
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUiIsImlhdCI6MTY1NTM4NDEyMywiZXhwIjoxNjU1OTg4OTIzfQ.RcJrs_cNvtg5nh7Q2_laRmsA-pUD0jB1jqx04es9hok",
+      },
+      body: JSON.stringify({
+        name: businessEntityValue!.name,
+        contract: businessEntityValue!.contract,
+        businessEntity: businessEntityValue!.businessEntity,
+        type: businessEntityValue!.type,
+      }),
+    }).then((res) => console.log(res));
+    setBusinessEntityIsEdit(false);
+  };
+
+  console.log(businessEntityValue);
+
   return (
     <div className={styles.app}>
       <div className={styles.wrapper}>
         <Navbar />
-        <Info companies={companies} contacts={contacts} />
+        <Info
+          companies={companies}
+          contacts={contacts}
+          shortNameIsEdit={shortNameIsEdit}
+          handleShortNameEdit={handleShortNameEdit}
+          handleShortNameChange={handleShortNameChange}
+          shortNameValue={shortNameValue}
+          handleShortNameSave={handleShortNameSave}
+          businessEntityIsEdit={businessEntityIsEdit}
+          handleBusinessEntityEdit={handleBusinessEntityEdit}
+          businessEntityValue={businessEntityValue}
+          handleBusinessEntityNameChange={handleBusinessEntityNameChange}
+          handleBusinessEntityContractNoChange={
+            handleBusinessEntityContractNoChange
+          }
+          handleBusinessEntityIssueDateChange={
+            handleBusinessEntityIssueDateChange
+          }
+          handleBusinessEntityFormChange={handleBusinessEntityFormChange}
+          handleBusinessEntityTypeChange={handleBusinessEntityTypeChange}
+          handleBusinessEntitySave={handleBusinessEntitySave}
+        />
       </div>
 
       <Footer />

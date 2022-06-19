@@ -18,6 +18,70 @@
   padding-left: 43px;
 }
 
+.inputShortNameWrapper {
+  padding-left: 43px;
+
+  width: 100%;
+}
+
+.input_shortName {
+  width: 15%;
+  height: 20px;
+  border: 1px solid #cdcdcd;
+  border-radius: 4px;
+  padding: 0 10px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 40px;
+  letter-spacing: 0.5px;
+}
+
+.input_shortName:hover {
+  border-color: #808080;
+}
+
+.input_shortName:focus {
+  outline: none !important;
+  border: 1px solid #3b3b3b;
+}
+
+.inputEntities {
+  width: 15%;
+  height: 15px;
+  border: 1px solid #cdcdcd;
+  border-radius: 4px;
+  padding: 0 10px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 40px;
+  letter-spacing: 0.5px;
+}
+
+.inputDate {
+  margin-left: 5px;
+}
+
+.acceptChangesBtn {
+  width: 80px;
+  height: 20px;
+  border: none;
+  background: none;
+  padding-left: 13px;
+  cursor: pointer;
+  color: #82b284;
+  font-size: 20px;
+}
+
+.acceptChangesBtn:hover {
+  color: #a4c7a5;
+}
+
+.acceptChangesBtn:active {
+  color: #58a742;
+}
+
 .editBtn {
   border: none;
   background: none;
