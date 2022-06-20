@@ -318,7 +318,16 @@ export function Info(props: any) {
                 )
               )}
             </ul>
-            <button className={styles.addPhotosBtn}></button>
+
+            <label htmlFor="file-upload" className={styles.customFileUpload}>
+              добавить изображение
+            </label>
+            <input
+              id="file-upload"
+              type="file"
+              className={styles.addPhotosInput}
+              onChange={props.handleSetFile}
+            />
           </li>
         </ul>
       </div>

@@ -72,6 +72,7 @@ function App() {
   const [contactsIsEdit, setContactsIsEdit] = useState<boolean>(false);
   const [contactsValue, setContactsValue] = useState<Contacts | null>(null);
   const [modalDeleteCompany, setModalDeleteCompany] = useState<boolean>(false);
+  const [file, setFile] = useState<File | null>(null);
 
   useEffect(() => {
     fetch("http://135.181.35.61:2112/auth?user=USER", {
@@ -283,6 +284,23 @@ function App() {
     setModalDeleteCompany(false);
   };
 
+  const handleSetFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFile(e.target.files![0]);
+  };
+
+  const sendPhoto = () => {
+    fetch("http://135.181.35.61:2112/companies/12/image", {
+      method: "POST",
+      headers: {
+        contentType: "multipart/form-data",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUiIsImlhdCI6MTY1NTM4NDEyMywiZXhwIjoxNjU1OTg4OTIzfQ.RcJrs_cNvtg5nh7Q2_laRmsA-pUD0jB1jqx04es9hok",
+      },
+      body: "file=@https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/274px-PNG_transparency_demonstration_1.png",
+    });
+  };
+
+  console.log(file);
   return (
     <div className={styles.app}>
       <div className={styles.wrapper}>
@@ -319,6 +337,8 @@ function App() {
           handleModalDeleteCompany={handleModalDeleteCompany}
           handleCancelDeleteCompany={handleCancelDeleteCompany}
           handleDeleteCompany={handleDeleteCompany}
+          handleSetFile={handleSetFile}
+          sendPhoto={sendPhoto}
         />
       </div>
 

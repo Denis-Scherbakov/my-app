@@ -1,5 +1,6 @@
 .infoWrapper {
   width: 100%;
+  height: 100vh;
 }
 
 .infoHeadWrapper {
@@ -20,12 +21,10 @@
 
 .inputShortNameWrapper {
   padding-left: 43px;
-
-  width: 100%;
 }
 
 .input_shortName {
-  width: 15%;
+  width: 65%;
   height: 20px;
   border: 1px solid #cdcdcd;
   border-radius: 4px;
@@ -47,11 +46,9 @@
 }
 
 .inputEntities {
-  width: 15%;
   height: 15px;
   border: 1px solid #cdcdcd;
   border-radius: 4px;
-  padding: 0 10px;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -65,7 +62,7 @@
 
 .inputEntities:focus {
   outline: none !important;
-  border: 1px solid #3b3b3b;
+  border-color: #3b3b3b;
 }
 
 .inputDate {
@@ -153,6 +150,7 @@
 
 .firstInfoChapter {
   margin: 0;
+  padding: 0;
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
@@ -161,10 +159,12 @@
 }
 
 .grid_div {
+  margin: 0;
+  margin-top: 10px;
+  padding: 0;
   display: grid;
   gap: 5px;
-  grid-template-columns: minmax(150px, max-content) auto;
-  padding-top: 15px;
+  grid-template-columns: minmax(200px, max-content) auto;
 }
 
 .infoKey {
@@ -209,8 +209,43 @@ a:active {
   padding-top: 5px;
 }
 
-.addPhotosBtn {
-  width: 400px;
-  height: 40px;
-  margin-top: 32px;
+input[type="file"] {
+  display: none;
+}
+
+.customFileUpload {
+  position: relative;
+  display: inline-block;
+  margin-top: 10px;
+  width: 300px;
+  height: 30px;
+  padding-left: 8.5em;
+  padding-top: 0.7em;
+  border: 1px solid #e5e5e5;
+  border-radius: 2px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 160%;
+  text-transform: uppercase;
+  color: #82b284;
+  cursor: pointer;
+}
+
+.customFileUpload::before {
+  content: "+";
+  position: absolute;
+  top: 25%;
+  left: 5%;
+  font-size: 30px;
+  font-weight: lighter;
+}
+
+.customFileUpload:hover {
+  color: #98c88c;
+  border-color: #808080;
+}
+
+.customFileUpload:active {
+  color: #58a742;
+  border-color: #3b3b3b;
 }
