@@ -1,11 +1,16 @@
 .footer {
   text-align: center;
-  background-color: #ffffff;
+
+  width: 80%;
+  height: 40px;
+  margin-left: 312px;
+  margin-top: 20px;
 }
 
 .footerText {
   margin: 0;
   padding: 0;
   opacity: 0.3;
-  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 12px;
 }

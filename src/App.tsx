@@ -75,10 +75,10 @@ function App() {
   const [file, setFile] = useState<File | null>(null);
 
   useEffect(() => {
-    fetch("http://135.181.35.61:2112/auth?user=USER", {
+    fetch("http://135.181.35.61:2112/auth?user=USERNAME", {
       method: "GET",
     }).then((res) => {
-      setBearer(res);
+      console.log(Object.fromEntries(res.headers));
     });
   }, []);
 
@@ -87,7 +87,7 @@ function App() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUiIsImlhdCI6MTY1NTM4NDEyMywiZXhwIjoxNjU1OTg4OTIzfQ.RcJrs_cNvtg5nh7Q2_laRmsA-pUD0jB1jqx04es9hok`,
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTYyNTE4OTcsImV4cCI6MTY1Njg1NjY5N30.sjfCW1GNY8ixMe3q9mqY6wKAI4dDM2BIOR2XwlCUO1Y`,
       },
     })
       .then((res) => res.json())
@@ -103,7 +103,7 @@ function App() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUiIsImlhdCI6MTY1NTM4NDEyMywiZXhwIjoxNjU1OTg4OTIzfQ.RcJrs_cNvtg5nh7Q2_laRmsA-pUD0jB1jqx04es9hok`,
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTYyNTE4OTcsImV4cCI6MTY1Njg1NjY5N30.sjfCW1GNY8ixMe3q9mqY6wKAI4dDM2BIOR2XwlCUO1Y`,
       },
     })
       .then((res) => res.json())
@@ -124,7 +124,7 @@ function App() {
       method: "PATCH",
       headers: {
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUiIsImlhdCI6MTY1NTM4NDEyMywiZXhwIjoxNjU1OTg4OTIzfQ.RcJrs_cNvtg5nh7Q2_laRmsA-pUD0jB1jqx04es9hok",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTYyNTE4OTcsImV4cCI6MTY1Njg1NjY5N30.sjfCW1GNY8ixMe3q9mqY6wKAI4dDM2BIOR2XwlCUO1Y",
       },
       body: JSON.stringify({ shortName: shortNameValue }),
     });
@@ -197,7 +197,7 @@ function App() {
       method: "PATCH",
       headers: {
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUiIsImlhdCI6MTY1NTM4NDEyMywiZXhwIjoxNjU1OTg4OTIzfQ.RcJrs_cNvtg5nh7Q2_laRmsA-pUD0jB1jqx04es9hok",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTYyNTE4OTcsImV4cCI6MTY1Njg1NjY5N30.sjfCW1GNY8ixMe3q9mqY6wKAI4dDM2BIOR2XwlCUO1Y",
       },
       body: JSON.stringify({
         name: businessEntityValue!.name,
@@ -252,7 +252,7 @@ function App() {
       method: "PATCH",
       headers: {
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUiIsImlhdCI6MTY1NTM4NDEyMywiZXhwIjoxNjU1OTg4OTIzfQ.RcJrs_cNvtg5nh7Q2_laRmsA-pUD0jB1jqx04es9hok",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTYyNTE4OTcsImV4cCI6MTY1Njg1NjY5N30.sjfCW1GNY8ixMe3q9mqY6wKAI4dDM2BIOR2XwlCUO1Y",
       },
       body: JSON.stringify({
         lastname: contactsValue!.fullName.split(" ")[0],
@@ -278,7 +278,7 @@ function App() {
       method: "DELETE",
       headers: {
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUiIsImlhdCI6MTY1NTM4NDEyMywiZXhwIjoxNjU1OTg4OTIzfQ.RcJrs_cNvtg5nh7Q2_laRmsA-pUD0jB1jqx04es9hok",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTYyNTE4OTcsImV4cCI6MTY1Njg1NjY5N30.sjfCW1GNY8ixMe3q9mqY6wKAI4dDM2BIOR2XwlCUO1Y",
       },
     });
     setModalDeleteCompany(false);
@@ -300,7 +300,6 @@ function App() {
     });
   };
 
-  console.log(file);
   return (
     <div className={styles.app}>
       <div className={styles.wrapper}>
@@ -348,3 +347,22 @@ function App() {
 }
 
 export default App;
+
+// -
+// Не соответствие макету:
+// * шрифт не тот - done
+// * футер не там, где нужно - done
+// * при выборе загружаемого изображения можно выбрать файл с любым типом
+// * загрузка изображения не происходит
+// * подпись под существующим изображением (вместо даты Date) - done
+// * инпуты не соответствуют UIkit
+// * размеры инпутов неудобные, в них не помещается целиком даже исходная строка
+// * нет валидации полей форм
+// * нет обработки ошибки от АПИ
+// * отсутствует роутинг
+
+// * не заметил что запросы, в которых не указан Content-Type отправляются по умолчанию с text/plain, поэтому АПИ их по сути не обрабатывает
+// * handleBusinessEntitySave и handleShortNameSave - два отдельно описанных PATCH запроса
+// * куча ошибок линтера
+// * url api не вынесено в env или конфиг
+// * путь к изображению организации зачем-то вшит в код

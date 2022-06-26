@@ -6,6 +6,22 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Proxima Nova Light";
+
+  src: url("/src/fonts/proxima-nova-light.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Proxima Nova Semibold";
+
+  src: url("/src/fonts/proxima-nova-semibold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   margin: 0;
   padding: 0;

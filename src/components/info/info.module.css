@@ -127,7 +127,7 @@
 .last_li::after {
   content: "";
   position: absolute;
-  bottom: -23px;
+  bottom: -40px;
   left: 0;
   right: 0;
   height: 0.5em;
@@ -140,6 +140,7 @@
 }
 
 .infoChapter {
+  font-family: "Proxima Nova Light";
   margin: 0;
   font-style: normal;
   font-weight: 300;
@@ -149,6 +150,7 @@
 }
 
 .firstInfoChapter {
+  font-family: "Proxima Nova Light";
   margin: 0;
   padding: 0;
   font-style: normal;
@@ -168,6 +170,7 @@
 }
 
 .infoKey {
+  font-family: "Proxima Nova Light";
   font-weight: 300;
   font-size: 14px;
 }

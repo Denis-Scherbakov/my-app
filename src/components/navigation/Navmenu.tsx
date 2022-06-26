@@ -22,7 +22,7 @@ export function Navmenu() {
                 fill="#82B284"
               />
             </svg>
-            <div>Организации</div>
+            <div className={styles.navmenu_div}>Организации</div>
           </a>
         </li>
       </ul>

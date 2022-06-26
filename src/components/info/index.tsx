@@ -1,7 +1,29 @@
 import { InfoHeader } from "./InfoHeader";
 import styles from ".//info.module.css";
 
+interface DateTimeFormatOptions {
+  localeMatcher?: string;
+  weekday?: string;
+  era?: string;
+  year?: string;
+  month?: string;
+  day?: string;
+  hour?: string;
+  minute?: string;
+  second?: string;
+  timeZoneName?: string;
+  formatMatcher?: string;
+  hour12?: boolean;
+  timeZone?: string;
+}
+
 export function Info(props: any) {
+  let options: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+
   return (
     props.companies &&
     props.contacts && (
@@ -313,7 +335,12 @@ export function Info(props: any) {
                       className={styles.photo_img}
                     />
                     <span className={styles.photoName}>{photo.name}</span>
-                    <span className={styles.photoDate}>Date</span>
+                    <span className={styles.photoDate}>
+                      {new Date(props.companies.updatedAt).toLocaleDateString(
+                        "ru-Ru",
+                        options
+                      )}
+                    </span>
                   </li>
                 )
               )}

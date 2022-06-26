@@ -20,11 +20,11 @@
 }
 
 .deleteCard {
-  padding-top: 24px;
-  padding-left: 24px;
   font-weight: 400;
   font-size: 20px;
   color: #3b3b3b;
+  padding-top: 24px;
+  padding-left: 24px;
 }
 
 .deleteQuestion {
@@ -43,6 +43,7 @@
 }
 
 .cancelBtn {
+  font-family: "Proxima Nova Semibold";
   border: none;
   background: none;
   color: #b9b9b9;
@@ -54,6 +55,7 @@
 }
 
 .acceptBtn {
+  font-family: "Proxima Nova Semibold";
   border: none;
   background: none;
   color: #82b284;
@@ -90,11 +92,11 @@
 }
 
 .anchorInfo {
+  font-family: "Proxima Nova Semibold";
   font-weight: 600;
   font-size: 16px;
   text-transform: uppercase;
   line-height: 20px;
-  letter-spacing: 1px;
 }
 
 .actionsList {
