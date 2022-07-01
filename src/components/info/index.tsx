@@ -1,21 +1,7 @@
 import { InfoHeader } from "./InfoHeader";
 import styles from ".//info.module.css";
-
-interface DateTimeFormatOptions {
-  localeMatcher?: string;
-  weekday?: string;
-  era?: string;
-  year?: string;
-  month?: string;
-  day?: string;
-  hour?: string;
-  minute?: string;
-  second?: string;
-  timeZoneName?: string;
-  formatMatcher?: string;
-  hour12?: boolean;
-  timeZone?: string;
-}
+import { ShortNameInput } from "../formik/ShortNameInput";
+import { FormicContainer } from "../formik/FormicContainer";
 
 export function Info(props: any) {
   let options: Intl.DateTimeFormatOptions = {
@@ -41,7 +27,12 @@ export function Info(props: any) {
 
           {props.shortNameIsEdit && (
             <div className={styles.inputShortNameWrapper}>
-              <input
+              <ShortNameInput
+                shortNameValue={props.shortNameValue}
+                handleShortNameChange={props.handleShortNameChange}
+                handleShortNameSave={props.handleShortNameSave}
+              />
+              {/* <input
                 className={styles.input_shortName}
                 type="text"
                 value={props.shortNameValue}
@@ -52,7 +43,7 @@ export function Info(props: any) {
                 onClick={props.handleShortNameSave}
               >
                 Принять
-              </button>
+              </button> */}
             </div>
           )}
           {!props.shortNameIsEdit && (

@@ -77,8 +77,6 @@ function App() {
   useEffect(() => {
     fetch("http://135.181.35.61:2112/auth?user=USERNAME", {
       method: "GET",
-    }).then((res) => {
-      console.log(Object.fromEntries(res.headers));
     });
   }, []);
 
@@ -123,6 +121,7 @@ function App() {
     fetch("http://135.181.35.61:2112/companies/12", {
       method: "PATCH",
       headers: {
+        "Content-Type": "application/json",
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTYyNTE4OTcsImV4cCI6MTY1Njg1NjY5N30.sjfCW1GNY8ixMe3q9mqY6wKAI4dDM2BIOR2XwlCUO1Y",
       },
@@ -196,6 +195,7 @@ function App() {
     fetch("http://135.181.35.61:2112/companies/12", {
       method: "PATCH",
       headers: {
+        "Content-Type": "application/json",
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTYyNTE4OTcsImV4cCI6MTY1Njg1NjY5N30.sjfCW1GNY8ixMe3q9mqY6wKAI4dDM2BIOR2XwlCUO1Y",
       },
@@ -251,6 +251,7 @@ function App() {
     fetch("http://135.181.35.61:2112/contacts/16", {
       method: "PATCH",
       headers: {
+        "Content-Type": "application/json",
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTYyNTE4OTcsImV4cCI6MTY1Njg1NjY5N30.sjfCW1GNY8ixMe3q9mqY6wKAI4dDM2BIOR2XwlCUO1Y",
       },
@@ -277,6 +278,7 @@ function App() {
     fetch("http://135.181.35.61:2112/companies/12", {
       method: "DELETE",
       headers: {
+        "Content-Type": "application/json",
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTYyNTE4OTcsImV4cCI6MTY1Njg1NjY5N30.sjfCW1GNY8ixMe3q9mqY6wKAI4dDM2BIOR2XwlCUO1Y",
       },
@@ -304,6 +306,7 @@ function App() {
     <div className={styles.app}>
       <div className={styles.wrapper}>
         <Navbar />
+
         <Info
           companies={companies}
           contacts={contacts}
@@ -361,8 +364,8 @@ export default App;
 // * нет обработки ошибки от АПИ
 // * отсутствует роутинг
 
-// * не заметил что запросы, в которых не указан Content-Type отправляются по умолчанию с text/plain, поэтому АПИ их по сути не обрабатывает
-// * handleBusinessEntitySave и handleShortNameSave - два отдельно описанных PATCH запроса
-// * куча ошибок линтера
+// * не заметил что запросы, в которых не указан Content-Type отправляются по умолчанию с text/plain, поэтому АПИ их по сути не обрабатывает -done
+// * handleBusinessEntitySave и handleShortNameSave - два отдельно описанных PATCH запроса - potomu chto eto 2 otdelnix zaprosa uebok
+// * куча ошибок линтера - kakogo lintera dolboeb? V ochko sebe ix zapixni
 // * url api не вынесено в env или конфиг
 // * путь к изображению организации зачем-то вшит в код
