@@ -1,7 +1,14 @@
 import { InfoHeader } from "./InfoHeader";
 import styles from ".//info.module.css";
-import { ShortNameInput } from "../formik/ShortNameInput";
-import { FormicContainer } from "../formik/FormicContainer";
+import { ShortNameInput } from "../forms/ShortNameInput";
+import { FullNameInput } from "../forms/FullNameInput";
+import { ContractNoInput } from "../forms/ContractNoInput";
+import { IssueDateInput } from "../forms/IssueDateInput";
+import { BusinessEntityInput } from "../forms/BusinessEntityInput";
+import { BusinessEntityTypeInput } from "../forms/BusinessEntityTypeInput";
+import { ContactFullNameInput } from "../forms/ContactFullNameInput";
+import { ContactPhoneInput } from "../forms/ContactPhoneInput";
+import { ContactEmailInput } from "../forms/ContactEmailInput";
 
 export function Info(props: any) {
   let options: Intl.DateTimeFormatOptions = {
@@ -32,18 +39,6 @@ export function Info(props: any) {
                 handleShortNameChange={props.handleShortNameChange}
                 handleShortNameSave={props.handleShortNameSave}
               />
-              {/* <input
-                className={styles.input_shortName}
-                type="text"
-                value={props.shortNameValue}
-                onChange={props.handleShortNameChange}
-              />
-              <button
-                className={styles.acceptChangesBtn}
-                onClick={props.handleShortNameSave}
-              >
-                Принять
-              </button> */}
             </div>
           )}
           {!props.shortNameIsEdit && (
@@ -133,14 +128,13 @@ export function Info(props: any) {
                   <span>{props.companies.name}</span>
                 )}
                 {props.businessEntityIsEdit && (
-                  <div className={styles.inputShortNameWrapper}>
-                    <input
-                      className={styles.inputEntities}
-                      type="text"
-                      value={props.businessEntityValue.name}
-                      onChange={props.handleBusinessEntityNameChange}
-                    />
-                  </div>
+                  <FullNameInput
+                    handleBusinessEntitySave={props.handleBusinessEntitySave}
+                    fullName={props.businessEntityValue.name}
+                    handleBusinessEntityNameChange={
+                      props.handleBusinessEntityNameChange
+                    }
+                  />
                 )}
 
                 <span className={styles.infoKey}>Договор:</span>
@@ -153,19 +147,19 @@ export function Info(props: any) {
                   </span>
                 )}
                 {props.businessEntityIsEdit && (
-                  <div className={styles.inputShortNameWrapper}>
-                    <input
-                      className={styles.inputEntities}
-                      type="text"
-                      value={props.businessEntityValue.contract.no}
-                      onChange={props.handleBusinessEntityContractNoChange}
+                  <div className={styles.contractChangeWrapper}>
+                    <ContractNoInput
+                      contractNo={props.businessEntityValue.contract.no}
+                      handleBusinessEntityContractNoChange={
+                        props.handleBusinessEntityContractNoChange
+                      }
                     />
-                    {` от`}
-                    <input
-                      className={`${styles.inputEntities} ${styles.inputDate}`}
-                      type="text"
-                      value={props.businessEntityValue.contract.issue_date}
-                      onChange={props.handleBusinessEntityIssueDateChange}
+                    {`от`}
+                    <IssueDateInput
+                      issueDate={props.businessEntityValue.contract.issue_date}
+                      handleBusinessEntityIssueDateChange={
+                        props.handleBusinessEntityIssueDateChange
+                      }
                     />
                   </div>
                 )}
@@ -175,14 +169,12 @@ export function Info(props: any) {
                   <span>{props.companies.businessEntity}</span>
                 )}
                 {props.businessEntityIsEdit && (
-                  <div className={styles.inputShortNameWrapper}>
-                    <input
-                      className={styles.inputEntities}
-                      type="text"
-                      value={props.businessEntityValue.businessEntity}
-                      onChange={props.handleBusinessEntityFormChange}
-                    />
-                  </div>
+                  <BusinessEntityInput
+                    businessEntity={props.businessEntityValue.businessEntity}
+                    handleBusinessEntityFormChange={
+                      props.handleBusinessEntityFormChange
+                    }
+                  />
                 )}
 
                 <span className={styles.infoKey}>Тип:</span>
@@ -190,14 +182,12 @@ export function Info(props: any) {
                   <span>{props.companies.type.join(", ")}</span>
                 )}
                 {props.businessEntityIsEdit && (
-                  <div className={styles.inputShortNameWrapper}>
-                    <input
-                      className={styles.inputEntities}
-                      type="text"
-                      value={`${props.businessEntityValue.type.join(", ")}`}
-                      onChange={props.handleBusinessEntityTypeChange}
-                    />
-                  </div>
+                  <BusinessEntityTypeInput
+                    entityType={`${props.businessEntityValue.type.join(", ")}`}
+                    handleBusinessEntityTypeChange={
+                      props.handleBusinessEntityTypeChange
+                    }
+                  />
                 )}
               </div>
             </div>
@@ -254,14 +244,13 @@ export function Info(props: any) {
                   <span>{`${props.contacts.lastname} ${props.contacts.firstname} ${props.contacts.patronymic}`}</span>
                 )}
                 {props.contactsIsEdit && (
-                  <div className={styles.inputShortNameWrapper}>
-                    <input
-                      className={styles.inputEntities}
-                      type="text"
-                      value={props.contactsValue.fullName}
-                      onChange={props.handleContactsFullNameChange}
-                    />
-                  </div>
+                  <ContactFullNameInput
+                    fullName={props.contactsValue.fullName}
+                    handleContactsSave={props.handleContactsSave}
+                    handleContactsFullNameChange={
+                      props.handleContactsFullNameChange
+                    }
+                  />
                 )}
 
                 <span className={styles.infoKey}>Телефон:</span>
@@ -281,14 +270,11 @@ export function Info(props: any) {
                   )}-${props.contacts.phone.slice(9, 11)}`}</span>
                 )}
                 {props.contactsIsEdit && (
-                  <div className={styles.inputShortNameWrapper}>
-                    <input
-                      className={styles.inputEntities}
-                      type="text"
-                      value={props.contactsValue.phone}
-                      onChange={props.handleContactsPhoneChange}
-                    />
-                  </div>
+                  <ContactPhoneInput
+                    phone={props.contactsValue.phone}
+                    handleContactsPhoneChange={props.handleContactsPhoneChange}
+                    handleContactsSave={props.handleContactsSave}
+                  />
                 )}
 
                 <span className={styles.infoKey}>Эл. почта:</span>
@@ -298,14 +284,19 @@ export function Info(props: any) {
                   </a>
                 )}
                 {props.contactsIsEdit && (
-                  <div className={styles.inputShortNameWrapper}>
-                    <input
-                      className={styles.inputEntities}
-                      type="text"
-                      value={props.contactsValue.email}
-                      onChange={props.handleContactsEmailChange}
-                    />
-                  </div>
+                  <ContactEmailInput
+                    email={props.contactsValue.email}
+                    handleContactsEmailChange={props.handleContactsEmailChange}
+                    handleContactsSave={props.handleContactsSave}
+                  />
+                  // <div className={styles.inputShortNameWrapper}>
+                  //   <input
+                  //     className={styles.inputEntities}
+                  //     type="text"
+                  //     value={props.contactsValue.email}
+                  //     onChange={props.handleContactsEmailChange}
+                  //   />
+                  // </div>
                 )}
               </div>
             </div>

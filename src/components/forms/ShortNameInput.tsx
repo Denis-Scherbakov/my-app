@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
-import { FormicControl } from "./FormicControl";
+import { FormicControl } from "../formik/FormicControl";
 import styles from "../../components/info/info.module.css";
 
 export function ShortNameInput(props: any) {

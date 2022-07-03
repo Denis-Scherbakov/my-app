@@ -49,6 +49,7 @@
 
 .inputEntities {
   height: 15px;
+  width: 400px;
   border: 1px solid #cdcdcd;
   border-radius: 4px;
   font-style: normal;
@@ -256,5 +257,9 @@ input[type="file"] {
 }
 
 .form {
+  display: flex;
+}
+
+.contractChangeWrapper {
   display: flex;
 }
