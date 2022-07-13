@@ -20,8 +20,9 @@ export function ContractNoInput(props: any) {
       validationSchema={validationSchema}
     >
       {(formik) => (
-        <Form onChange={props.handleBusinessEntityContractNoChange}>
+        <Form>
           <FormicControl
+            onChange={props.handleBusinessEntityContractNoChange}
             className={styles.inputEntities}
             control="input"
             type="text"

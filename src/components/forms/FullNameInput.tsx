@@ -20,8 +20,9 @@ export function FullNameInput(props: any) {
       validationSchema={validationSchema}
     >
       {(formik) => (
-        <Form onChange={props.handleBusinessEntityNameChange}>
+        <Form>
           <FormicControl
+            onChange={props.handleBusinessEntityNameChange}
             className={styles.inputEntities}
             control="input"
             type="text"

@@ -20,8 +20,9 @@ export function BusinessEntityTypeInput(props: any) {
       validationSchema={validationSchema}
     >
       {(formik) => (
-        <Form onChange={props.handleBusinessEntityTypeChange}>
+        <Form>
           <FormicControl
+            onChange={props.handleBusinessEntityTypeChange}
             className={styles.inputEntities}
             control="input"
             type="text"

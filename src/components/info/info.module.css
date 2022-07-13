@@ -5,10 +5,16 @@
 
 .infoHeadWrapper {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
-  padding-top: 15px;
-  height: 20px;
+  padding-top: 10px;
+  height: 40px;
+}
+
+.formWrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .infoHead {
@@ -57,6 +63,7 @@
   font-size: 16px;
   line-height: 40px;
   letter-spacing: 0.5px;
+  margin-top: 6px;
 }
 
 .inputEntities:hover {
@@ -74,10 +81,9 @@
 
 .acceptChangesBtn {
   width: 80px;
-  height: 20px;
   border: none;
   background: none;
-  padding-left: 13px;
+
   cursor: pointer;
   color: #82b284;
   font-size: 20px;
@@ -94,7 +100,7 @@
 .editBtn {
   border: none;
   background: none;
-  padding-left: 13px;
+
   cursor: pointer;
 }
 
@@ -172,10 +178,23 @@
   grid-template-columns: minmax(200px, max-content) auto;
 }
 
+.infoKeysWrapper {
+  padding-right: 40px;
+}
+
+.infoValueWrapper {
+  position: relative;
+}
+
 .infoKey {
   font-family: "Proxima Nova Light";
   font-weight: 300;
   font-size: 14px;
+  padding-top: 10px;
+}
+
+.infoValue {
+  padding-top: 5px;
 }
 
 a {
@@ -262,4 +281,12 @@ input[type="file"] {
 
 .contractChangeWrapper {
   display: flex;
+}
+
+.input__wrapper {
+  display: flex;
+}
+
+.formic__span_margin {
+  margin: 5px 5px 0px 5px;
 }

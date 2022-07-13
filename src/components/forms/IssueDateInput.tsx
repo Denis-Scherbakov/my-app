@@ -20,8 +20,9 @@ export function IssueDateInput(props: any) {
       validationSchema={validationSchema}
     >
       {(formik) => (
-        <Form onChange={props.handleBusinessEntityIssueDateChange}>
+        <Form>
           <FormicControl
+            onChange={props.handleBusinessEntityIssueDateChange}
             className={styles.inputEntities}
             control="input"
             type="text"

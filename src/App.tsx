@@ -85,7 +85,7 @@ function App() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTYyNTE4OTcsImV4cCI6MTY1Njg1NjY5N30.sjfCW1GNY8ixMe3q9mqY6wKAI4dDM2BIOR2XwlCUO1Y`,
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTc1MzU2OTgsImV4cCI6MTY1ODE0MDQ5OH0.CWEPqPqh1CgLvuHQjRDH_p7AYFbFk1Zf7mp5ioHGm7Q`,
       },
     })
       .then((res) => res.json())
@@ -101,7 +101,7 @@ function App() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTYyNTE4OTcsImV4cCI6MTY1Njg1NjY5N30.sjfCW1GNY8ixMe3q9mqY6wKAI4dDM2BIOR2XwlCUO1Y`,
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTc1MzU2OTgsImV4cCI6MTY1ODE0MDQ5OH0.CWEPqPqh1CgLvuHQjRDH_p7AYFbFk1Zf7mp5ioHGm7Q`,
       },
     })
       .then((res) => res.json())
@@ -123,7 +123,7 @@ function App() {
       headers: {
         "Content-Type": "application/json",
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTYyNTE4OTcsImV4cCI6MTY1Njg1NjY5N30.sjfCW1GNY8ixMe3q9mqY6wKAI4dDM2BIOR2XwlCUO1Y",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTc1MzU2OTgsImV4cCI6MTY1ODE0MDQ5OH0.CWEPqPqh1CgLvuHQjRDH_p7AYFbFk1Zf7mp5ioHGm7Q",
       },
       body: JSON.stringify({ shortName: shortNameValue }),
     });
@@ -139,6 +139,8 @@ function App() {
       type: companies!.type,
     });
   };
+
+  console.log(businessEntityValue);
 
   const handleBusinessEntityNameChange = (
     e: React.ChangeEvent<HTMLInputElement>
@@ -191,19 +193,19 @@ function App() {
     });
   };
 
-  const handleBusinessEntitySave = () => {
+  const handleBusinessEntitySave = (value: any) => {
     fetch("http://135.181.35.61:2112/companies/12", {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTYyNTE4OTcsImV4cCI6MTY1Njg1NjY5N30.sjfCW1GNY8ixMe3q9mqY6wKAI4dDM2BIOR2XwlCUO1Y",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTc1MzU2OTgsImV4cCI6MTY1ODE0MDQ5OH0.CWEPqPqh1CgLvuHQjRDH_p7AYFbFk1Zf7mp5ioHGm7Q",
       },
       body: JSON.stringify({
-        name: businessEntityValue!.name,
-        contract: businessEntityValue!.contract,
-        businessEntity: businessEntityValue!.businessEntity,
-        type: businessEntityValue!.type,
+        name: value!.fullName,
+        contract: { no: value!.contractNo, issue_date: value.issueDate },
+        businessEntity: value!.businessEntity,
+        type: value!.entityType.split(","),
       }),
     });
     setBusinessEntityIsEdit(false);
@@ -253,7 +255,7 @@ function App() {
       headers: {
         "Content-Type": "application/json",
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTYyNTE4OTcsImV4cCI6MTY1Njg1NjY5N30.sjfCW1GNY8ixMe3q9mqY6wKAI4dDM2BIOR2XwlCUO1Y",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTc1MzU2OTgsImV4cCI6MTY1ODE0MDQ5OH0.CWEPqPqh1CgLvuHQjRDH_p7AYFbFk1Zf7mp5ioHGm7Q",
       },
       body: JSON.stringify({
         lastname: contactsValue!.fullName.split(" ")[0],
@@ -280,7 +282,7 @@ function App() {
       headers: {
         "Content-Type": "application/json",
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTYyNTE4OTcsImV4cCI6MTY1Njg1NjY5N30.sjfCW1GNY8ixMe3q9mqY6wKAI4dDM2BIOR2XwlCUO1Y",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTc1MzU2OTgsImV4cCI6MTY1ODE0MDQ5OH0.CWEPqPqh1CgLvuHQjRDH_p7AYFbFk1Zf7mp5ioHGm7Q",
       },
     });
     setModalDeleteCompany(false);
@@ -296,7 +298,7 @@ function App() {
       headers: {
         contentType: "multipart/form-data",
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUiIsImlhdCI6MTY1NTM4NDEyMywiZXhwIjoxNjU1OTg4OTIzfQ.RcJrs_cNvtg5nh7Q2_laRmsA-pUD0jB1jqx04es9hok",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTc1MzU2OTgsImV4cCI6MTY1ODE0MDQ5OH0.CWEPqPqh1CgLvuHQjRDH_p7AYFbFk1Zf7mp5ioHGm7Q",
       },
       body: "file=@https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/274px-PNG_transparency_demonstration_1.png",
     });
@@ -359,8 +361,8 @@ export default App;
 // * загрузка изображения не происходит
 // * подпись под существующим изображением (вместо даты Date) - done
 // * инпуты не соответствуют UIkit
-// * размеры инпутов неудобные, в них не помещается целиком даже исходная строка
-// * нет валидации полей форм
+// * размеры инпутов неудобные, в них не помещается целиком даже исходная строка - done
+// * нет валидации полей форм - done
 // * нет обработки ошибки от АПИ
 // * отсутствует роутинг
 

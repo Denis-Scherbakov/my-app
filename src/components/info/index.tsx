@@ -1,14 +1,10 @@
 import { InfoHeader } from "./InfoHeader";
 import styles from ".//info.module.css";
 import { ShortNameInput } from "../forms/ShortNameInput";
-import { FullNameInput } from "../forms/FullNameInput";
-import { ContractNoInput } from "../forms/ContractNoInput";
-import { IssueDateInput } from "../forms/IssueDateInput";
-import { BusinessEntityInput } from "../forms/BusinessEntityInput";
-import { BusinessEntityTypeInput } from "../forms/BusinessEntityTypeInput";
 import { ContactFullNameInput } from "../forms/ContactFullNameInput";
 import { ContactPhoneInput } from "../forms/ContactPhoneInput";
 import { ContactEmailInput } from "../forms/ContactEmailInput";
+import { GeneralInfoForm } from "../forms/general-info-form";
 
 export function Info(props: any) {
   let options: Intl.DateTimeFormatOptions = {
@@ -77,10 +73,16 @@ export function Info(props: any) {
         </div>
         <ul className={styles.infoList}>
           <li className={styles.li}>
-            <div>
-              <div className={styles.infoHeadWrapper}>
+            <div className={styles.formWrapper}>
+              <div className={styles.infoKeysWrapper}>
                 <h3 className={styles.firstInfoChapter}>Общая информация</h3>
-                {!props.businessEntityIsEdit && (
+                <div className={styles.infoKey}>Полное название:</div>
+                <div className={styles.infoKey}>Договор:</div>
+                <div className={styles.infoKey}>Форма:</div>
+                <div className={styles.infoKey}>Тип:</div>
+              </div>
+              {!props.businessEntityIsEdit && (
+                <div className={styles.infoValueWrapper}>
                   <button
                     className={styles.editBtn}
                     onClick={props.handleBusinessEntityEdit}
@@ -112,89 +114,47 @@ export function Info(props: any) {
                       />
                     </svg>
                   </button>
-                )}
-                {props.businessEntityIsEdit && (
-                  <button
-                    className={styles.acceptChangesBtn}
-                    onClick={props.handleBusinessEntitySave}
-                  >
-                    Принять
-                  </button>
-                )}
-              </div>
-              <div className={styles.grid_div}>
-                <span className={styles.infoKey}>Полное название:</span>
-                {!props.businessEntityIsEdit && (
-                  <span>{props.companies.name}</span>
-                )}
-                {props.businessEntityIsEdit && (
-                  <FullNameInput
-                    handleBusinessEntitySave={props.handleBusinessEntitySave}
-                    fullName={props.businessEntityValue.name}
-                    handleBusinessEntityNameChange={
-                      props.handleBusinessEntityNameChange
-                    }
-                  />
-                )}
-
-                <span className={styles.infoKey}>Договор:</span>
-                {!props.businessEntityIsEdit && (
-                  <span>
+                  <div className={styles.infoValue}>{props.companies.name}</div>
+                  <div className={styles.infoValue}>
                     {props.companies.contract.no} от{" "}
                     {new Date(
                       props.companies.contract.issue_date
                     ).toLocaleDateString()}
-                  </span>
-                )}
-                {props.businessEntityIsEdit && (
-                  <div className={styles.contractChangeWrapper}>
-                    <ContractNoInput
-                      contractNo={props.businessEntityValue.contract.no}
-                      handleBusinessEntityContractNoChange={
-                        props.handleBusinessEntityContractNoChange
-                      }
-                    />
-                    {`от`}
-                    <IssueDateInput
-                      issueDate={props.businessEntityValue.contract.issue_date}
-                      handleBusinessEntityIssueDateChange={
-                        props.handleBusinessEntityIssueDateChange
-                      }
-                    />
                   </div>
-                )}
-
-                <span className={styles.infoKey}>Форма:</span>
-                {!props.businessEntityIsEdit && (
-                  <span>{props.companies.businessEntity}</span>
-                )}
-                {props.businessEntityIsEdit && (
-                  <BusinessEntityInput
-                    businessEntity={props.businessEntityValue.businessEntity}
-                    handleBusinessEntityFormChange={
-                      props.handleBusinessEntityFormChange
-                    }
-                  />
-                )}
-
-                <span className={styles.infoKey}>Тип:</span>
-                {!props.businessEntityIsEdit && (
-                  <span>{props.companies.type.join(", ")}</span>
-                )}
-                {props.businessEntityIsEdit && (
-                  <BusinessEntityTypeInput
-                    entityType={`${props.businessEntityValue.type.join(", ")}`}
-                    handleBusinessEntityTypeChange={
-                      props.handleBusinessEntityTypeChange
-                    }
-                  />
-                )}
-              </div>
+                  <div className={styles.infoValue}>
+                    {props.companies.businessEntity}
+                  </div>
+                  <div className={styles.infoValue}>
+                    {props.companies.type.join(", ")}
+                  </div>
+                </div>
+              )}
+              {props.businessEntityIsEdit && (
+                <GeneralInfoForm
+                  handleBusinessEntitySave={props.handleBusinessEntitySave}
+                  businessEntityValue={props.businessEntityValue}
+                  handleBusinessEntityNameChange={
+                    props.handleBusinessEntityNameChange
+                  }
+                  handleBusinessEntityContractNoChange={
+                    props.handleBusinessEntityContractNoChange
+                  }
+                  handleBusinessEntityIssueDateChange={
+                    props.handleBusinessEntityIssueDateChange
+                  }
+                  handleBusinessEntityFormChange={
+                    props.handleBusinessEntityFormChange
+                  }
+                  handleBusinessEntityTypeChange={
+                    props.handleBusinessEntityTypeChange
+                  }
+                />
+              )}
             </div>
           </li>
           <li className={styles.li}>
             <div>
-              <div className={styles.infoHeadWrapper}>
+              <div className={styles.formWrapper}>
                 <h3 className={styles.infoChapter}>Контактные данные</h3>
                 {!props.contactsIsEdit && (
                   <button
@@ -289,14 +249,6 @@ export function Info(props: any) {
                     handleContactsEmailChange={props.handleContactsEmailChange}
                     handleContactsSave={props.handleContactsSave}
                   />
-                  // <div className={styles.inputShortNameWrapper}>
-                  //   <input
-                  //     className={styles.inputEntities}
-                  //     type="text"
-                  //     value={props.contactsValue.email}
-                  //     onChange={props.handleContactsEmailChange}
-                  //   />
-                  // </div>
                 )}
               </div>
             </div>
@@ -327,7 +279,6 @@ export function Info(props: any) {
                 )
               )}
             </ul>
-
             <label htmlFor="file-upload" className={styles.customFileUpload}>
               добавить изображение
             </label>
