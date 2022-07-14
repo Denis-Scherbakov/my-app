@@ -140,7 +140,7 @@ function App() {
     });
   };
 
-  console.log(businessEntityValue);
+  console.log(contacts);
 
   const handleBusinessEntityNameChange = (
     e: React.ChangeEvent<HTMLInputElement>
@@ -249,7 +249,7 @@ function App() {
     });
   };
 
-  const handleContactsSave = () => {
+  const handleContactsSave = (value: any) => {
     fetch("http://135.181.35.61:2112/contacts/16", {
       method: "PATCH",
       headers: {
@@ -258,11 +258,11 @@ function App() {
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTc1MzU2OTgsImV4cCI6MTY1ODE0MDQ5OH0.CWEPqPqh1CgLvuHQjRDH_p7AYFbFk1Zf7mp5ioHGm7Q",
       },
       body: JSON.stringify({
-        lastname: contactsValue!.fullName.split(" ")[0],
-        firstname: contactsValue!.fullName.split(" ")[1],
-        patronymic: contactsValue!.fullName.split(" ")[2],
-        phone: contactsValue!.phone,
-        email: contactsValue!.email,
+        lastname: value!.fullPersonName.split(" ")[0],
+        firstname: value!.fullPersonName.split(" ")[1],
+        patronymic: value!.fullPersonName.split(" ")[2],
+        phone: value!.phone,
+        email: value!.email,
       }),
     });
     setContactsIsEdit(false);
@@ -355,19 +355,19 @@ export default App;
 
 // -
 // Не соответствие макету:
-// * шрифт не тот - done
-// * футер не там, где нужно - done
 // * при выборе загружаемого изображения можно выбрать файл с любым типом
 // * загрузка изображения не происходит
+// * отсутствует роутинг
+// * url api не вынесено в env или конфиг
+// * нет обработки ошибки от АПИ
+// * шрифт не тот - done
+// * футер не там, где нужно - done
 // * подпись под существующим изображением (вместо даты Date) - done
-// * инпуты не соответствуют UIkit
+// * инпуты не соответствуют UIkit - done
 // * размеры инпутов неудобные, в них не помещается целиком даже исходная строка - done
 // * нет валидации полей форм - done
-// * нет обработки ошибки от АПИ
-// * отсутствует роутинг
 
 // * не заметил что запросы, в которых не указан Content-Type отправляются по умолчанию с text/plain, поэтому АПИ их по сути не обрабатывает -done
 // * handleBusinessEntitySave и handleShortNameSave - два отдельно описанных PATCH запроса - potomu chto eto 2 otdelnix zaprosa uebok
 // * куча ошибок линтера - kakogo lintera dolboeb? V ochko sebe ix zapixni
-// * url api не вынесено в env или конфиг
 // * путь к изображению организации зачем-то вшит в код
