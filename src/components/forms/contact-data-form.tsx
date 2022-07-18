@@ -5,13 +5,7 @@ import styles from "../../components/info/info.module.css";
 
 export function ContactDataForm(props: any) {
   const fullPersonName = `${props.contacts.lastname} ${props.contacts.firstname} ${props.contacts.patronymic}`;
-  const phone = `+${props.contacts.phone.slice(
-    0,
-    1
-  )} (${props.contacts.phone.slice(1, 4)}) ${props.contacts.phone.slice(
-    4,
-    7
-  )}-${props.contacts.phone.slice(7, 9)}-${props.contacts.phone.slice(9, 11)}`;
+  const phone = props.contacts.phone;
   const email = props.contacts.email;
 
   const initialValues = {

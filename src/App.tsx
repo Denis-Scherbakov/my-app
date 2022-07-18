@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import styles from "./App.module.css";
 import { Footer } from "./components/footer";
 import { Info } from "./components/info";
@@ -85,7 +86,7 @@ function App() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTc1MzU2OTgsImV4cCI6MTY1ODE0MDQ5OH0.CWEPqPqh1CgLvuHQjRDH_p7AYFbFk1Zf7mp5ioHGm7Q`,
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTgxNTA1OTgsImV4cCI6MTY1ODc1NTM5OH0.D3CQ0ftHl0QDQZawybtSIF3Z0fTskPl8j6ceHQE45q4`,
       },
     })
       .then((res) => res.json())
@@ -101,7 +102,7 @@ function App() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTc1MzU2OTgsImV4cCI6MTY1ODE0MDQ5OH0.CWEPqPqh1CgLvuHQjRDH_p7AYFbFk1Zf7mp5ioHGm7Q`,
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTgxNTA1OTgsImV4cCI6MTY1ODc1NTM5OH0.D3CQ0ftHl0QDQZawybtSIF3Z0fTskPl8j6ceHQE45q4`,
       },
     })
       .then((res) => res.json())
@@ -123,7 +124,7 @@ function App() {
       headers: {
         "Content-Type": "application/json",
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTc1MzU2OTgsImV4cCI6MTY1ODE0MDQ5OH0.CWEPqPqh1CgLvuHQjRDH_p7AYFbFk1Zf7mp5ioHGm7Q",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTgxNTA1OTgsImV4cCI6MTY1ODc1NTM5OH0.D3CQ0ftHl0QDQZawybtSIF3Z0fTskPl8j6ceHQE45q4",
       },
       body: JSON.stringify({ shortName: shortNameValue }),
     });
@@ -199,7 +200,7 @@ function App() {
       headers: {
         "Content-Type": "application/json",
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTc1MzU2OTgsImV4cCI6MTY1ODE0MDQ5OH0.CWEPqPqh1CgLvuHQjRDH_p7AYFbFk1Zf7mp5ioHGm7Q",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTgxNTA1OTgsImV4cCI6MTY1ODc1NTM5OH0.D3CQ0ftHl0QDQZawybtSIF3Z0fTskPl8j6ceHQE45q4",
       },
       body: JSON.stringify({
         name: value!.fullName,
@@ -255,7 +256,7 @@ function App() {
       headers: {
         "Content-Type": "application/json",
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTc1MzU2OTgsImV4cCI6MTY1ODE0MDQ5OH0.CWEPqPqh1CgLvuHQjRDH_p7AYFbFk1Zf7mp5ioHGm7Q",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTgxNTA1OTgsImV4cCI6MTY1ODc1NTM5OH0.D3CQ0ftHl0QDQZawybtSIF3Z0fTskPl8j6ceHQE45q4",
       },
       body: JSON.stringify({
         lastname: value!.fullPersonName.split(" ")[0],
@@ -282,7 +283,7 @@ function App() {
       headers: {
         "Content-Type": "application/json",
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTc1MzU2OTgsImV4cCI6MTY1ODE0MDQ5OH0.CWEPqPqh1CgLvuHQjRDH_p7AYFbFk1Zf7mp5ioHGm7Q",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTgxNTA1OTgsImV4cCI6MTY1ODc1NTM5OH0.D3CQ0ftHl0QDQZawybtSIF3Z0fTskPl8j6ceHQE45q4",
       },
     });
     setModalDeleteCompany(false);
@@ -298,7 +299,7 @@ function App() {
       headers: {
         contentType: "multipart/form-data",
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTc1MzU2OTgsImV4cCI6MTY1ODE0MDQ5OH0.CWEPqPqh1CgLvuHQjRDH_p7AYFbFk1Zf7mp5ioHGm7Q",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTgxNTA1OTgsImV4cCI6MTY1ODc1NTM5OH0.D3CQ0ftHl0QDQZawybtSIF3Z0fTskPl8j6ceHQE45q4",
       },
       body: "file=@https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/274px-PNG_transparency_demonstration_1.png",
     });
@@ -308,44 +309,49 @@ function App() {
     <div className={styles.app}>
       <div className={styles.wrapper}>
         <Navbar />
-
-        <Info
-          companies={companies}
-          contacts={contacts}
-          shortNameIsEdit={shortNameIsEdit}
-          handleShortNameEdit={handleShortNameEdit}
-          handleShortNameChange={handleShortNameChange}
-          shortNameValue={shortNameValue}
-          handleShortNameSave={handleShortNameSave}
-          businessEntityIsEdit={businessEntityIsEdit}
-          handleBusinessEntityEdit={handleBusinessEntityEdit}
-          businessEntityValue={businessEntityValue}
-          handleBusinessEntityNameChange={handleBusinessEntityNameChange}
-          handleBusinessEntityContractNoChange={
-            handleBusinessEntityContractNoChange
-          }
-          handleBusinessEntityIssueDateChange={
-            handleBusinessEntityIssueDateChange
-          }
-          handleBusinessEntityFormChange={handleBusinessEntityFormChange}
-          handleBusinessEntityTypeChange={handleBusinessEntityTypeChange}
-          handleBusinessEntitySave={handleBusinessEntitySave}
-          handleContactsIsEdit={handleContactsIsEdit}
-          contactsIsEdit={contactsIsEdit}
-          handleContactsFullNameChange={handleContactsFullNameChange}
-          contactsValue={contactsValue}
-          handleContactsPhoneChange={handleContactsPhoneChange}
-          handleContactsEmailChange={handleContactsEmailChange}
-          handleContactsSave={handleContactsSave}
-          modalDeleteCompany={modalDeleteCompany}
-          handleModalDeleteCompany={handleModalDeleteCompany}
-          handleCancelDeleteCompany={handleCancelDeleteCompany}
-          handleDeleteCompany={handleDeleteCompany}
-          handleSetFile={handleSetFile}
-          sendPhoto={sendPhoto}
-        />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Info
+                companies={companies}
+                contacts={contacts}
+                shortNameIsEdit={shortNameIsEdit}
+                handleShortNameEdit={handleShortNameEdit}
+                handleShortNameChange={handleShortNameChange}
+                shortNameValue={shortNameValue}
+                handleShortNameSave={handleShortNameSave}
+                businessEntityIsEdit={businessEntityIsEdit}
+                handleBusinessEntityEdit={handleBusinessEntityEdit}
+                businessEntityValue={businessEntityValue}
+                handleBusinessEntityNameChange={handleBusinessEntityNameChange}
+                handleBusinessEntityContractNoChange={
+                  handleBusinessEntityContractNoChange
+                }
+                handleBusinessEntityIssueDateChange={
+                  handleBusinessEntityIssueDateChange
+                }
+                handleBusinessEntityFormChange={handleBusinessEntityFormChange}
+                handleBusinessEntityTypeChange={handleBusinessEntityTypeChange}
+                handleBusinessEntitySave={handleBusinessEntitySave}
+                handleContactsIsEdit={handleContactsIsEdit}
+                contactsIsEdit={contactsIsEdit}
+                handleContactsFullNameChange={handleContactsFullNameChange}
+                contactsValue={contactsValue}
+                handleContactsPhoneChange={handleContactsPhoneChange}
+                handleContactsEmailChange={handleContactsEmailChange}
+                handleContactsSave={handleContactsSave}
+                modalDeleteCompany={modalDeleteCompany}
+                handleModalDeleteCompany={handleModalDeleteCompany}
+                handleCancelDeleteCompany={handleCancelDeleteCompany}
+                handleDeleteCompany={handleDeleteCompany}
+                handleSetFile={handleSetFile}
+                sendPhoto={sendPhoto}
+              />
+            }
+          />
+        </Routes>
       </div>
-
       <Footer />
     </div>
   );
@@ -357,7 +363,7 @@ export default App;
 // Не соответствие макету:
 // * при выборе загружаемого изображения можно выбрать файл с любым типом
 // * загрузка изображения не происходит
-// * отсутствует роутинг
+// * отсутствует роутинг done
 // * url api не вынесено в env или конфиг
 // * нет обработки ошибки от АПИ
 // * шрифт не тот - done

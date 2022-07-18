@@ -7,6 +7,7 @@ import { SearchSvg } from "../../images/navigation/SearchSvg";
 import { SettingsSvg } from "../../images/navigation/SettingsSvg";
 import styles from ".//Navbar.module.css";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export function Navbar() {
   const [isActive, setIsActive] = useState(false);
@@ -18,9 +19,9 @@ export function Navbar() {
       <nav className={styles.navBarWrapper}>
         <ul className={styles.topBar}>
           <li className={styles.navAnchor}>
-            <a>
+            <Link to="/">
               <HomeSvg />
-            </a>
+            </Link>
           </li>
           <li>
             <button className={styles.navButton} onClick={toggle}>
