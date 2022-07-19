@@ -29,14 +29,14 @@ export function Navbar() {
             </button>
           </li>
           <li className={styles.navAnchor}>
-            <a>
+            <a href="localhost:3000">
               <SearchSvg />
             </a>
           </li>
         </ul>
         <ul>
           <li className={styles.navAnchor}>
-            <a>
+            <a href="localhost:3000">
               <SettingsSvg />
             </a>
           </li>
@@ -46,7 +46,7 @@ export function Navbar() {
             </button>
           </li>
           <li className={styles.navAnchor}>
-            <a>
+            <a href="localhost:3000">
               <ExitSvg />
             </a>
           </li>

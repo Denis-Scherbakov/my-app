@@ -28,6 +28,8 @@ type Company = {
   ];
 };
 
+console.log(process.env);
+
 type Contact = {
   id: "16";
   lastname: "Григорьев";
@@ -61,7 +63,6 @@ type Contacts = {
 // };
 
 function App() {
-  const [bearer, setBearer] = useState<object | null>(null);
   const [companies, setCompanies] = useState<Company | null>(null);
   const [contacts, setContacts] = useState<Contact | null>(null);
   const [shortNameIsEdit, setShortNameIsEdit] = useState<boolean>(false);
@@ -73,7 +74,7 @@ function App() {
   const [contactsIsEdit, setContactsIsEdit] = useState<boolean>(false);
   const [contactsValue, setContactsValue] = useState<Contacts | null>(null);
   const [modalDeleteCompany, setModalDeleteCompany] = useState<boolean>(false);
-  const [file, setFile] = useState<File | null>(null);
+  const [, setFile] = useState<File | null>(null);
 
   useEffect(() => {
     fetch("http://135.181.35.61:2112/auth?user=USERNAME", {
@@ -86,7 +87,7 @@ function App() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTgxNTA1OTgsImV4cCI6MTY1ODc1NTM5OH0.D3CQ0ftHl0QDQZawybtSIF3Z0fTskPl8j6ceHQE45q4`,
+        Authorization: process.env.REACT_APP_BEARER!,
       },
     })
       .then((res) => res.json())
@@ -102,7 +103,7 @@ function App() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTgxNTA1OTgsImV4cCI6MTY1ODc1NTM5OH0.D3CQ0ftHl0QDQZawybtSIF3Z0fTskPl8j6ceHQE45q4`,
+        Authorization: process.env.REACT_APP_BEARER!,
       },
     })
       .then((res) => res.json())
@@ -123,8 +124,7 @@ function App() {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTgxNTA1OTgsImV4cCI6MTY1ODc1NTM5OH0.D3CQ0ftHl0QDQZawybtSIF3Z0fTskPl8j6ceHQE45q4",
+        Authorization: process.env.REACT_APP_BEARER!,
       },
       body: JSON.stringify({ shortName: shortNameValue }),
     });
@@ -199,8 +199,7 @@ function App() {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTgxNTA1OTgsImV4cCI6MTY1ODc1NTM5OH0.D3CQ0ftHl0QDQZawybtSIF3Z0fTskPl8j6ceHQE45q4",
+        Authorization: process.env.REACT_APP_BEARER!,
       },
       body: JSON.stringify({
         name: value!.fullName,
@@ -255,8 +254,7 @@ function App() {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTgxNTA1OTgsImV4cCI6MTY1ODc1NTM5OH0.D3CQ0ftHl0QDQZawybtSIF3Z0fTskPl8j6ceHQE45q4",
+        Authorization: process.env.REACT_APP_BEARER!,
       },
       body: JSON.stringify({
         lastname: value!.fullPersonName.split(" ")[0],
@@ -282,8 +280,7 @@ function App() {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTgxNTA1OTgsImV4cCI6MTY1ODc1NTM5OH0.D3CQ0ftHl0QDQZawybtSIF3Z0fTskPl8j6ceHQE45q4",
+        Authorization: process.env.REACT_APP_BEARER!,
       },
     });
     setModalDeleteCompany(false);
@@ -298,8 +295,7 @@ function App() {
       method: "POST",
       headers: {
         contentType: "multipart/form-data",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiVVNFUk5BTUUiLCJpYXQiOjE2NTgxNTA1OTgsImV4cCI6MTY1ODc1NTM5OH0.D3CQ0ftHl0QDQZawybtSIF3Z0fTskPl8j6ceHQE45q4",
+        Authorization: process.env.REACT_APP_BEARER!,
       },
       body: "file=@https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/274px-PNG_transparency_demonstration_1.png",
     });
@@ -364,7 +360,7 @@ export default App;
 // * при выборе загружаемого изображения можно выбрать файл с любым типом
 // * загрузка изображения не происходит
 // * отсутствует роутинг done
-// * url api не вынесено в env или конфиг
+// * url api не вынесено в env или конфиг done
 // * нет обработки ошибки от АПИ
 // * шрифт не тот - done
 // * футер не там, где нужно - done
@@ -376,4 +372,4 @@ export default App;
 // * не заметил что запросы, в которых не указан Content-Type отправляются по умолчанию с text/plain, поэтому АПИ их по сути не обрабатывает -done
 // * handleBusinessEntitySave и handleShortNameSave - два отдельно описанных PATCH запроса - potomu chto eto 2 otdelnix zaprosa uebok
 // * куча ошибок линтера - kakogo lintera dolboeb? V ochko sebe ix zapixni
-// * путь к изображению организации зачем-то вшит в код
+// * путь к изображению организации зачем-то вшит в код - neuspel ebat

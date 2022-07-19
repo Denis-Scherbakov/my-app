@@ -27,7 +27,7 @@ export function InfoHeader(props: any) {
         </div>
       )}
       <div>
-        <a href="#" className={styles.anchor}>
+        <a href="localhost:3000" className={styles.anchor}>
           <svg
             width="20"
             height="20"

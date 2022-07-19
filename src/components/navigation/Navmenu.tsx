@@ -9,7 +9,7 @@ export function Navmenu() {
       </div>
       <ul>
         <li className={styles.anchor_li}>
-          <a href="#" className={styles.anchor}>
+          <a href="localhost:3000" className={styles.anchor}>
             <svg
               width="20"
               height="20"
